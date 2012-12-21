@@ -1,5 +1,7 @@
 package com.ganta.learningandroid;
 
+import java.io.IOException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -38,6 +40,11 @@ public class Camera extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
         case R.id.bSetWall:
+            try {
+                getApplicationContext().setWallpaper(bmp);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             break;
         case R.id.ibTakePic:
             i = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
