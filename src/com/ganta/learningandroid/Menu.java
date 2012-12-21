@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class Menu extends ListActivity {
-    String classes[] = { "StartScreenActivity", "TextPlay" };
+    String classes[] = { "StartScreenActivity", "TextPlay", "Email", "Camera" };
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
