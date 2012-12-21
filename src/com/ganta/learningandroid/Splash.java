@@ -23,7 +23,7 @@ public class Splash extends Activity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
-                    Intent startActivity = new Intent("android.intent.action.START_SCREEN");
+                    Intent startActivity = new Intent("android.intent.action.MENU");
                     startActivity(startActivity);
                 }
             }
