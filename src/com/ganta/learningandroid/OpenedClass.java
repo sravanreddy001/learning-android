@@ -1,6 +1,7 @@
 package com.ganta.learningandroid;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,11 +24,11 @@ public class OpenedClass extends Activity implements OnClickListener,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.send);
         initialize();
-        Bundle gotBasket = getIntent().getExtras();
+        /*Bundle gotBasket = getIntent().getExtras();
         if(gotBasket != null) {
             gotBread = gotBasket.getString("key");
         }
-        question.setText(gotBread);
+        question.setText(gotBread);*/
     }
 
     private void initialize() {
@@ -41,7 +42,12 @@ public class OpenedClass extends Activity implements OnClickListener,
 
     @Override
     public void onClick(View v) {
-
+        Intent person = new Intent();
+        Bundle backpack = new Bundle();
+        backpack.putString("answer", sendData);
+        person.putExtras(backpack);
+        setResult(RESULT_OK, person);
+        finish();
     }
 
     @Override

@@ -34,7 +34,14 @@ public class Data extends Activity implements OnClickListener {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        
+        if(resultCode == RESULT_OK) {
+            Bundle basket = data.getExtras();
+            String answer = basket.getString("answer");
+            gotAnswer.setText(answer);
+        }
+        else {
+            gotAnswer.setText("Reulst not ok");
+        }
     }
 
     @Override
