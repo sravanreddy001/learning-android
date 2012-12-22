@@ -15,12 +15,19 @@ public class OpenedClass extends Activity implements OnClickListener,
     TextView question, test;
     Button returnData;
     RadioGroup selectionList;
+    String gotBread;
+    String sendData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.send);
         initialize();
+        Bundle gotBasket = getIntent().getExtras();
+        if(gotBasket != null) {
+            gotBread = gotBasket.getString("key");
+        }
+        question.setText(gotBread);
     }
 
     private void initialize() {
@@ -28,6 +35,7 @@ public class OpenedClass extends Activity implements OnClickListener,
         test = (TextView) findViewById(R.id.tvTest);
         returnData = (Button) findViewById(R.id.bReturn);
         returnData.setOnClickListener(this);
+        selectionList = (RadioGroup) findViewById(R.id.rgAnswers);
         selectionList.setOnCheckedChangeListener(this);
     }
 
@@ -40,12 +48,16 @@ public class OpenedClass extends Activity implements OnClickListener,
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (checkedId) {
         case R.id.rCrazy:
+            sendData = "Probably Right";
             break;
         case R.id.rSexy:
+            sendData = "Definitely Right";
             break;
         case R.id.rBoth:
+            sendData = "Spot On!";
             break;
         }
+        test.setText(sendData);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.ganta.learningandroid;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,8 +32,27 @@ public class Data extends Activity implements OnClickListener {
     }
 
     @Override
-    public void onClick(View v) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()) {
+        case R.id.bSA:
+            String bread = sendET.getText().toString();
+            Bundle basket = new Bundle();
+            basket.putString("key", bread);
+            Intent a = new Intent(Data.this, OpenedClass.class);
+            a.putExtras(basket);
+            startActivity(a);
+            break;
+        case R.id.bSAFR:
+            Intent i = new Intent(Data.this, OpenedClass.class);
+            startActivityForResult(i, 0);
+            break;
+        }
     }
     
 }
