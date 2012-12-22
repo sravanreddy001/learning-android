@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:title="About Us"
-        android:id="@+id/aboutUs" 
+
+    <item
+        android:id="@+id/aboutUs"
+        android:alphabeticShortcut="a"
         android:numericShortcut="1"
-        android:alphabeticShortcut="a"/>
-    <item android:title="Prefenrences"
-        android:id="@+id/preferences" 
-        />
+        android:title="About Us"/>
+    <item
+        android:id="@+id/preferences"
+        android:title="Prefenrences"/>
+    <item
+        android:id="@+id/exit"
+        android:title="Exit"/>
 
 </menu>
