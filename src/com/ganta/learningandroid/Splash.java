@@ -2,8 +2,10 @@ package com.ganta.learningandroid;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 
 public class Splash extends Activity {
 
@@ -13,9 +15,14 @@ public class Splash extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
-        
         splashSound = MediaPlayer.create(Splash.this, R.raw.autobots_roll_out);
-        splashSound.start();
+
+        SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        boolean musicAllowed = getPrefs.getBoolean("checkbox", true);
+        if(musicAllowed) {
+            splashSound.start();
+        }
+        
         Thread timer = new Thread() {
             public void run() {
                 try {
