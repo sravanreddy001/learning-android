@@ -8,6 +8,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import android.app.Activity;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.InputFilter.LengthFilter;
@@ -134,6 +136,16 @@ public class ExternalData extends Activity implements OnItemSelectedListener, On
                 Toast t = Toast.makeText(ExternalData.this, "File has been saved..", Toast.LENGTH_LONG);
                 t.show();
                 
+                // Update files for the user to use.
+                MediaScannerConnection.scanFile(ExternalData.this, new String[]{file.toString()}, null, 
+                        new MediaScannerConnection.OnScanCompletedListener() {
+                    
+                    @Override
+                    public void onScanCompleted(String path, Uri uri) {
+                        Toast t = Toast.makeText(ExternalData.this, "Scan Complete..", Toast.LENGTH_SHORT);
+                        t.show();
+                    }
+                });
                 
             }
             break;
