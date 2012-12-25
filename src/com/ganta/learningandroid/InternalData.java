@@ -1,6 +1,7 @@
 package com.ganta.learningandroid;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -9,6 +10,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -69,9 +71,46 @@ public class InternalData extends Activity implements OnClickListener {
             
             break;
         case R.id.bLoad:
-            
+            new LoadSomeStuff().execute(FILENAME);
             break;
         }
     }
+    
+    // AsyncTask -> Input, ProgressBar, Output
+    public class LoadSomeStuff extends AsyncTask<String, Integer, String> {
 
+        protected void onPreExecute(String f) {
+            //example setting up something
+        }
+        
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                FileInputStream fis = openFileInput(FILENAME);
+                byte[] dataArray = new byte[fis.available()];
+                while(fis.read(dataArray) != -1) {
+                    
+                }
+                String collected = new String(dataArray);
+                fis.close();
+                return collected;
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            //super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            //super.onPostExecute(result);
+            dataResults.setText(result);
+        }
+    }
 }
