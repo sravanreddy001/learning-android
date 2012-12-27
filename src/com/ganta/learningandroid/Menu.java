@@ -12,7 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class Menu extends ListActivity {
-    String classes[] = { "Accelerate", "SQLiteExample", "ExternalData", "InternalData","SharedPrefs", "Flipper", "SimpleBrowser", "Tabs", "StartScreenActivity", "TextPlay", "Email", "Camera",
+    String classes[] = { "HttpExample","Accelerate", "SQLiteExample", "ExternalData", "InternalData","SharedPrefs", "Flipper", "SimpleBrowser", "Tabs", "StartScreenActivity", "TextPlay", "Email", "Camera",
             "Data", "GFX", "GFXSurface", "SoundStuff", "Slider" };
 
     @Override
